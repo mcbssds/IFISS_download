@@ -7,10 +7,8 @@ To install IFISS the gzipped file must be unzipped and MATLAB or Octave should b
 
 
 If installing IFISS on a windows machine then you will also need to type <br>
- install_pc <br>
-at the prompt, before running the software for the first time. 
-
-Results for test problems can be reproduced by following the instruction in the diary file<br>
+install_pc <br>
+at the prompt, before running the software for the first time. Results for test problems can be reproduced by following the instruction in the diary file<br>
 guide37.txt
 
 To cite the code (current version), please use:
