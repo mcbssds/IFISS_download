@@ -1,5 +1,5 @@
 ifiss
-This is IFISS version 3.7: released 30 August 2023
+This is IFISS version 3.7: released 30 August 2023 updated 25 December 2024
 For help, type "helpme".
 
 navier_testproblem
@@ -85,14 +85,15 @@ Natural outflow on right hand vertical boundary ..
 FAST Q2-P1 NS a posteriori error estimation 
 checking edge numbering and computing edge lengths ... done
 Q2-P1 local N-S error estimator ...  
-interior residual RHS assembly took 6.8114e-02 seconds
-flux jump RHS assembly took 7.1263e-03 seconds
-LDLT factorization took 2.5528e-03 seconds
-triangular solves took 1.6428e-03 seconds
+interior residual RHS assembly took 1.3105e-01 seconds
+flux jump RHS assembly took 4.8185e-02 seconds
+LDLT factorization took 1.4434e-02 seconds
+triangular solves took 1.2590e-02 seconds
       computing divergence of discrete velocity solution ...  done
       estimated velocity divergence error:  3.145368e-02 
 estimated energy error is 8.6427e-02 
 plotting element data... done
+
 it_solve
 inflow/outflow (step) problem ...
 
@@ -198,11 +199,12 @@ convergence in  75 iterations
    75          -6.1344 
 Bingo!
 
-  1.6467e+00 seconds
+  1.6497e+00 seconds
 
 
 use new (enter figno) or existing (0) figure, default is 0 : 1
 colour (b,g,r,c,m,y,k): enter 1--7 (default 1) : 1
+
 it_solve
 inflow/outflow (step) problem ...
 
@@ -298,12 +300,13 @@ convergence in  55 iterations
    55          -6.1022 
 Bingo!
 
-  1.1879e+00 seconds
+  1.1880e+00 seconds
 
 
 use new (enter figno) or existing (0) figure, default is 0 : 
 figure number (default is current active figure) : 
 colour (b,g,r,c,m,y,k): enter 1--7 (default 1) : 7
+
 it_solve
 inflow/outflow (step) problem ...
 
@@ -585,28 +588,31 @@ convergence in  61 iterations
    61          -6.1503 
 Bingo!
 
-  1.8447e-01 seconds
+  2.0105e-01 seconds
 
 
 use new (enter figno) or existing (0) figure, default is 0 : 
 figure number (default is current active figure) : 
 colour (b,g,r,c,m,y,k): enter 1--7 (default 1) : 3
-save steadysol xns nnv % save the converged steady solution
+
+save steadysol xns nnv
+
 unsteady_step_navier
 Unsteady flow in a step domain ...
 viscosity parameter (default 1/220) : 1/50
+inlet perturbation magnitude (default 0) : 0
 Discrete Saddle-Point DAE system ...
 target time? (default 1e8) : 1e14
 number of timesteps (x200)? (default 5) : 1
 accuracy tolerance? (default 3e-5) : 1e-4
 number of Picard steps? (default 2) : 0
 averaging frequency? (default 10) : 
-plot solution evolution? 1/0 : 0
+plot flow solution evolution? 1/0 : 0
 Solving discrete N-S system using stabilized TR ...
 
 AxBhandle =
 
-  <a href="matlab:helpPopup function_handle" style="font-weight:bold">function_handle</a> with value:
+  function_handle with value:
 
     @defaultAxB
 
@@ -615,12 +621,6 @@ intermediate (CheckPoint) datafile: stabtrNS_end
   initial nonlinear residual is 3.360822e-02 
              boundary change is 2.783973e-08 
 setting up Q2 convection matrix...  done.
-
-lastmsg =
-
-    'Matrix is close to singular or badly scaled. Results may be inaccurate. RCOND =  3.224655e-17.'
-
-This should not cause difficulty for enclosed flow problems.
 
  StabTR with no nonlinear corrections
    step  timestep       time        residual      divresidual     acceleration
@@ -791,11 +791,11 @@ This should not cause difficulty for enclosed flow problems.
    154   5.435e+13     1.000e+14    2.958e-16     3.044e-16        2.726e-19
 finished in  154 steps!
 final time solution data is saved in stabtrNS_end.mat
-Integration took  9.511e+00 seconds
+Integration took  9.243e+00 seconds
 
 use new (enter figno) or existing (0) figure, default is 0 : 17
 154 timesteps
-All done
+
 load MovieData1.mat
 snaptime=[40,50,100];
 step_unsteadyflowrefX(qmethod,mv,U,time,A,By,Bx,G,xy,xyp,x,y,bound,snaptime,symm);
@@ -807,9 +807,10 @@ step_unsteadyflowrefX(qmethod,mv,U,time,A,By,Bx,G,xy,xyp,x,y,bound,snaptime,symm
    100   82.638   -7.528e-04       -0.02829  6.667e-01
    All done
 
-ufinal=U(:,end); load steadysol % compare velocity solutions
+ufinal=U(:,end); load steadysol 
 fprintf('difference in steady solutions is %6.2e\n',norm(ufinal-xns(1:nnv),inf))
 difference in steady solutions is 4.19e-06
+
 snapshot_solveflow
 
 Iterative solution of a SNAPSHOT linear system
@@ -857,7 +858,7 @@ convergence in  18 iterations
    18          -8.0276 
 Bingo!
 
-  6.3275e-01 seconds
+  5.2909e-01 seconds
 
 
 use new (enter figno) or existing (0) figure, default is 0 : 19
